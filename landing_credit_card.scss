@@ -1,0 +1,657 @@
+@import '_base';
+
+.compareCards {
+	position: absolute;
+	top: 80px;
+	background-color: $azul;
+	padding: 10px 30px 9px;
+	color: $white;
+	width: 100%;
+	display: none;
+	z-index: 100;
+
+	&.active {display: block;}
+
+	h4 {
+		font-size: 1.75rem;
+		display: inline-block;
+		padding-top: 8px;
+		margin-bottom: 0.9rem;
+		font-weight: bold;
+	}
+
+	span {
+		font-size: 1.125rem;
+		font-weight: bold;
+
+		&.indexComparing {margin-right: 1em;}
+
+		&.comparingNumber {
+			margin-right: 0;
+		}
+
+	}
+
+	.wrapper div {float: left;}
+	.noResults {padding: 12px 0; display: none;}
+
+	a {
+		padding: 7px 20px 9px;
+		font-size: 1.313rem;
+		background-color: $white;
+		color: $azul;
+		border-radius: 20px;
+		text-decoration: none;
+		float: right; 
+		margin-left: 20px;
+		margin-top: 5px;
+		cursor: pointer;
+		position: relative;
+		opacity: 1;
+		transition: opacity 0.2s ease;
+
+
+		&.closebt {
+			background-color: transparent;
+			font-size: 1.125rem;
+			color: $white;
+			padding: 11px 0;
+			border-radius: 0;
+			text-decoration: none;
+			margin-top: 0;
+
+			&:hover {opacity: 0.8;	text-decoration: underline;}
+		}
+
+		&#doCompare {
+			margin-left: 0;
+			margin-top: 2px;
+			opacity: 0.9;
+
+			&:hover {opacity: 1;}
+		}
+
+		&.disabled {
+			cursor: default;
+			transition: opacity 0.2s ease;
+		}
+
+		&#doCompare.disabled {opacity: 0.4;}
+
+		span {
+			display: block;
+			width: 20px;
+			height: 20px;
+			position: absolute;
+			background: image_url('deleteComparison.png') no-repeat;
+			right: -6px;
+			top: -26px;
+		}
+
+		img {width: 62px; height: 39px;}
+
+	}
+
+
+	ul {
+		display: inline-flex;
+		float: left;
+
+		li {
+			list-style: none;
+			margin-right: 2em;
+			padding-left: 6%;
+			float: none;
+			padding: 0;
+			background-color: #1a9ec6;
+			width: 62px;
+			height: 40px;
+			display: inline-block;
+			border-radius: 0;
+			margin-top: 3px;
+			font-weight: normal;
+
+			&:first-child {
+				background-image: none;
+				padding-left: 0;
+
+				a {margin-left: 0;}
+			}
+
+			&.added {background-color: transparent;}
+
+			span.more {
+				background: image_url('moreComparison.png') no-repeat 30% 15px;
+				width: 16px;
+				height: 16px;
+			}
+
+			a {
+				padding: 0;
+				margin: 0 0 0 1px;
+				background-color: transparent;
+				border-radius: 0;
+				float: none;
+
+				&:hover span {
+					background-position: -20px 0;
+				}
+			}
+		}
+	}
+
+}
+
+.stripe {
+	margin-bottom: 10px;  /* somente na landing por conta da barra de benefícios */
+}
+
+.beneficios {
+	border-bottom: 1px solid $lightgray;
+	padding-bottom: 20px;
+	margin: 20px 0 30px;
+	padding: 0 20px;
+
+	.wrapper {
+		ul {
+			overflow: hidden;
+			height: 116px;
+
+			li {
+				height: 116px;
+				text-transform: uppercase;
+				color: $azul;
+				font-weight: bold;
+				display: inline-block;
+				width: 14%;
+				font-size: 0.95rem;
+				line-height: 130%;
+				padding-top: 70px;
+				background: top center no-repeat;
+				text-align: center;
+				margin-right: 1.5em;
+				vertical-align: top;
+
+
+				&:nth-child(1) {background-image: image_url('ico_benef_controle.png');}
+				&:nth-child(2) {background-image: image_url('ico_benef_internet.png');}
+				&:nth-child(3) {background-image: image_url('ico_benef_descontos.png');}
+				&:nth-child(4) {background-image: image_url('ico_benef_estabelecimentos.png');}
+				&:nth-child(5) {background-image: image_url('ico_benef_global.png');}
+				&:nth-child(6) {background-image: image_url('ico_benef_seguranca.png'); margin-right: 0;}
+			}
+		}
+	}
+}
+
+main {
+	&.page {
+		h3 {
+			font-size: 1.75rem;
+			margin-bottom: 0.7em;
+		}
+
+		section {
+			overflow-y: auto;
+			position: relative;
+
+			li {
+				border: 2px solid $azul;
+				padding: 30px 25px 40px 30px;
+				width: 49%;
+				float: left;
+				margin-right: 1%;
+				margin-bottom: 2%;
+				list-style: none;
+			}
+
+			&.featured {
+				h2 {
+					background: image_url("title-check.png") 0 5px no-repeat;
+					padding-left: 35px;
+				}
+
+				a.plain {
+					float: right;
+				}
+				a#tooltipFeatured {
+					position: relative;
+					display: inline;
+					opacity: 1;
+
+					&:hover:after {
+						position: absolute;
+						left: 0;
+						top: 25px;
+						background-color: $white;
+						padding: 10px;
+						content: attr(title);
+						z-index: 1000;
+						color: $purple;
+						border: 1px solid $mediumgray;
+						font-size: 1rem;
+						line-height: 130%;
+					}
+				}
+			}
+			&.more {
+				margin-top: 1em;
+
+				li {border-color: $mediumgray;}
+			}
+
+			div {
+				display: inline-block;
+				width: 100%;
+
+				&.name {
+					a {
+						border: none;
+						padding: 0;
+						font-size: 2.188rem;
+						line-height: 100%;
+					}
+				}
+
+				h2 {
+					color: $azul;
+					font-size: 2.188rem;
+					margin: 0 0 20px;
+					font-weight: bold;
+				}
+
+				img {
+					float: left;
+					height: 77px;
+				}
+				p {
+					float: left;
+					margin: 0 0 0 10px;
+					font-size: 1.113rem;
+					width: 70%;
+				}
+				a {
+					margin-right: 10px;
+
+					&.compare, &.details {
+						&:hover {opacity: 1;}
+					}
+
+				}
+			}/*div*/
+
+			dl {
+				margin: 20px 30px 20px 0;
+				float: left;
+
+				dt {
+					text-transform: uppercase;
+				}
+
+				dd {
+					font-weight: bold;
+					font-size: 1.125rem;
+					margin: 0;
+				}
+			}/*dl*/
+		}/*section*/
+
+		a {
+			&.more {
+				margin: 0 auto 30px;
+				display: table;
+				padding: 8px 110px;
+				font-size: 1.1rem;
+				text-transform: uppercase;
+			}
+
+			&.compare.disabled {
+				color: $mediumgray;
+				border-color: $mediumgray;
+				cursor: default;
+			}
+
+			&.compare.added {
+				color: $white;
+				background-color: $azul;
+				border-color: $azul;
+				font-size: 0.98rem;
+				letter-spacing: 0;
+				padding: 10px 15px 8px;
+				opacity: 1;
+				transition: opacity 200ms ease;
+
+				&:hover {
+					opacity: 0.8;
+					transition: opacity 200ms ease;
+				}
+
+				&.solicite {
+					opacity: 1;
+					&:hover {
+						opacity: 0.8;
+						transition: opacity 200ms ease;
+					}
+				}
+			}
+		}
+	}
+}/*main*/
+
+
+
+
+@media only screen and (max-width : 1130px){
+
+	.beneficios {
+		.wrapper {
+			ul {
+				li {
+					font-size: 0.84rem;
+					letter-spacing: -0.25px;
+				}
+			}
+		}
+	}
+
+	main {
+		&.page {
+			li {
+				padding: 20px;
+				.actions {
+					a {
+						font-size: 1.0rem;
+						&.solicite {font-size: 1.4rem;}
+					}
+				}
+			}
+
+			section {
+				div {
+					p {
+						font-size: 1rem;
+					}
+					img {
+						width: 90px;
+						height: 57px;
+					}
+				}
+				dl	{
+					font-size: 0.8125rem;
+					margin-right: 20px;
+				}
+			}
+		}
+	}
+}
+
+
+
+@media only screen and (max-width : 1024px){
+
+	.beneficios {
+		.wrapper {
+			ul {
+				li {
+					width: 21%;
+					font-size: 0.70rem;
+				}
+			}
+		}
+	}
+
+	main {
+		&.page {
+			section {
+				div {
+					&.name {
+						p {
+							width: 75%;
+						}
+					}
+				}
+				li {
+					width: 100%;
+					padding: 30px;
+
+					dl {
+						width: auto;
+						margin: 20px 30px 30px 0;
+						font-size: 1rem;
+					}
+
+					.actions {
+						a {
+							padding: 6px 20px;
+							font-size: 1.113rem;
+							&.solicite {font-size: 1.5rem;}
+						}
+					}
+				}
+			}/*section*/
+		}
+	}/*main*/
+}
+
+
+
+@media only screen and (max-width : 768px){
+	.compareCards {
+		top: 60px;
+	}
+}
+
+
+@media only screen and (max-width : 600px){
+
+	.beneficios {
+		.wrapper {
+			ul {
+				li {
+					width: 27.5%;
+					font-size: 0.84rem;
+				}
+			}
+		}
+	}
+
+	main {
+		&.page {
+			padding: 0px 15px;
+
+			section {
+				&.featured {
+					a#tooltipFeatured {
+						display: none;
+					}
+				}
+				li {
+
+					dl {
+						margin-right: 10px;
+						font-size: 0.8125rem;
+					}
+
+					.actions {
+						a {
+							padding: 6px 13px;
+							font-size: 1.0125rem;
+							&.solicite {font-size: 1.4rem;}
+						}
+					}
+				}
+			}/*section*/
+		}
+		section {
+			div {
+				p {
+					font-size: 1rem;
+				}
+				img {
+					width: auto;
+				}
+			}
+		}
+	}/*main*/	
+
+	.compareCards {
+		h4 {font-size: 1.25rem;}
+		ul {
+			li {
+				/*background: none;*/
+
+				a {
+					margin: 0;
+				}
+			}
+		}
+		a#doCompare {
+			/*width: 100%;*/
+		}
+	}
+}
+
+
+@media only screen and (max-width : 525px){
+	main {
+		&.page {
+			section {
+				div {
+					&.name {
+						h2 {
+							p {
+								width: 70%;
+							}
+						}
+					}
+				}
+			}
+			a.more {
+				padding-right: 20px;
+				padding-left: 20px;
+			}
+		}
+	}
+	.compareCards {
+		ul {
+			li {
+				a {
+					margin: 0;
+				}
+			}
+		}
+		a#doCompare {
+			width: 100%;
+			text-align: center;
+			margin: 7px 0;
+			float: left;
+			max-width: 298px;
+		}
+	}
+}
+
+
+@media only screen and (max-width : 480px){
+
+	.beneficios {
+		.wrapper {
+			ul {
+				li {
+					width: 40%;
+					font-size: 0.95rem;
+				}
+			}
+		}
+	}
+
+	main {
+		&.page {
+			section {
+				div {
+					&.name {
+						p {
+							width: 100%;
+							margin-left: 0;
+							margin: 20px 0;
+						}
+					}
+				}
+				li {
+					padding: 15px 15px 25px;
+
+					dl {
+						width: 40%;
+						margin-top: 0;
+						margin-bottom: 20px;
+
+						&.instalment, &.membership {
+							margin-bottom: 10px;
+						}
+					}
+
+				}
+			}
+		}
+		section {
+			div {
+				p {
+					font-size: 1rem;
+				}
+				img {
+					width: 90px;
+					height: 77px;
+				}
+			}
+		}
+	}
+
+	.compareCards {
+		a.closebt {font-size: 0.975rem;}
+	}
+}
+
+
+@media only screen and (max-width : 420px){
+	main {
+		&.page {
+			section {
+				h3 {
+					font-size: 1.65rem;
+				}
+				&.featured {
+					h3 {
+						margin-bottom: 1.5em;
+					}
+
+					a#tooltipFeatured {
+						top: 30px;
+					}
+				}
+				li {
+					h2 a {
+						font-size: 1.788rem;
+					}
+					.actions a {
+						float: left;
+						margin-bottom: 10px;
+						&.solicite {font-size: 1.5rem; padding: 6px 13px 9px;}
+						&.compare.added {padding: 5px 15px 6px;}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width : 360px){
+	.compareCards {
+		padding-left: 10px;
+		padding-right: 10px;
+		ul {
+			li {
+				padding-left: 0;
+				margin-right: 0.3em;
+			}
+		}
+	}
+}

@@ -1,0 +1,293 @@
+@import 'include/_base';
+
+body {
+	a.callbutton:hover {
+		background-color: #84ca48;
+		opacity: 1;
+		transition: background-color 0.2s ease;
+	}
+}
+
+.content {
+	margin: 0 auto;	
+
+	main {
+		background: image_url('bg_header_telecom.jpg') top center / cover no-repeat;
+
+		height: 296px;		
+		display: block;
+		min-width: 990px;
+
+		.wrapper {		
+			div {
+				margin: 40px auto;	
+				width: 960px;
+
+				ul {
+					margin-top: 35px;
+
+					li {
+						float: left;
+						width: 33%;
+						max-width: 290px;
+						height: 135px;
+						text-align: center;
+						color: $white;
+						font-size: 1.2rem;
+						line-height: 120%;
+						margin-right: 30px;
+
+						&:nth-child(1) div {background-position: 0 			0;}
+						&:nth-child(2) div {background-position: -83px 		0;}
+						&:nth-child(3) div {background-position: -166px 	0;}
+					}
+				}
+			}	
+		}
+	}/*main*/
+
+	section {	
+		margin-top: 40px;
+
+		&.plans {
+			nav {
+				ul {
+					li {
+						float: left;
+						width: 24%;
+						margin-right: 1%;
+						padding-bottom: 10px;
+
+						a {
+							font-size: 1.75rem;
+							color: $violet;
+							border: 1px solid $lightgray;
+							background: $white;
+							transition: border-color 0.2s ease, color 0.2s ease;
+
+							&:hover, &:active, &.active {
+								border: 2px solid $green;
+								margin: 1px -2px 0px 2px;
+								color: $green;
+								position: relative;
+								transition: border-color 0.2s ease, color 0.2s ease;
+
+								&:after, &:before {
+									top: 100%;
+									left: 50%;
+									border: solid transparent;
+									content: " ";
+									height: 0;
+									width: 0;
+									position: absolute;
+									pointer-events: none;
+								}
+
+								&:after {
+									border-color: transparent;
+									border-top-color: $white;
+									border-width: 10px;
+									margin-left: -10px;
+								}
+
+								&:before {
+									border-color: transparent;
+									border-top-color: $green;
+									border-width: 13px;
+									margin-left: -13px;
+								}
+							}
+						}/*a*/
+					}/*li*/
+				}/*ul*/
+			}/*nav*/
+			header {
+				overflow: inherit;
+
+				div {
+					font-size: 1rem;
+					border-bottom: 1px solid $lightgray;
+					margin-right: 15px;
+					text-transform: uppercase;
+					padding-bottom: 10px;
+
+					&.provider {width: 350px}
+					&.price {width: 133px}
+					&.speed {width: 145px}
+					&.tv {width: 200px}
+					&.minutes {width: 306px}
+				}
+			}/*header*/
+
+			section {
+				margin-top: 0;
+
+				@import "_featurelist";
+
+
+			}/*section*/
+		}/*.plans*/
+
+
+
+		&#formAction {
+			div {
+				div {
+
+					h2 {	
+						text-align: left;
+						font-size: 2.813rem;
+						margin-left: 0;
+						width: 93%;
+					}
+
+					&.educationLead, &.postLead {
+						float: right;
+
+						&.active {display: block;}
+						&.hidden {display: none;}
+					}
+
+					&.educationLead {
+
+						div.fields {
+							width: 500px;
+							padding: 30px 30px 10px;
+							@include border-radius(10px);
+							border: 2px solid $mediumgray;
+						}
+						@import 'include/form/_lead.scss'	
+					}
+
+					&.postLead {
+						display: none;
+						@include border-radius(10px);
+						border: 2px solid $green;
+						padding: 30px 45px;
+
+						h2	{font-size: 2.188rem; width: 100%;}
+						p 	{font-size: 1.5rem;}
+					}
+				}
+			}
+		}	
+
+	}/*section*/
+}	
+
+
+@media screen and (min-width: 1440px) {
+	.content section.hero div img {
+		margin-right: 0;
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.content {
+		section {
+			min-width: 990px;
+			padding: 0 20px;
+
+			&.plans {
+				nav {
+					ul {
+						li {
+							a {
+								font-size: 1.25rem;
+								width: auto;
+
+								&:hover, &:active, &.active {
+									margin-right: 2px;
+								}
+							}
+						}/*li*/
+					}/*ul*/
+				}/*nav*/
+
+				header {
+					div {
+						&.provider {width: 210px;}
+						&.price {width: 113px;}
+						&.speed {width: 125px;}
+						&.tv {width: 170px;}
+						&.minutes {width: 27%; min-width: 248px; max-width: 306px;}
+					}
+				}
+
+				section {
+					div {
+						div {
+							font-size: 1rem;
+
+							&.provider {
+								width: 190px;
+
+								div {
+									font-size: 1rem;
+
+									&:first-child {
+										width: 70px;
+										margin-right: 5px;
+
+										img {width: 100%;}
+									}
+								}
+							}
+							&.price {
+								width: 112px;
+								font-size: 1.25rem;
+
+								span {
+									&.currency {font-size: 1.1rem;}
+								}
+							}
+							&.internetSpeed {width: 125px;}
+							&.tvChannels {
+								width: 170px;
+								margin-right: 10px;
+
+								div {
+									&:first-child {margin-right: 30px;}
+								}
+							}
+							&.landMinutes {width: 130px; font-size: 1rem;}
+							&.calltoAction {font-size: 1.25rem;}
+						}/*div*/
+					}/*div*/
+				}/*section*/
+			}/*.plans*/
+
+
+			&#formAction {
+				div {
+					div {
+						&.educationLead {
+							div {
+								&.fields {
+									width: 100%;
+
+									div {
+										input { 
+											&[type=text],
+											&[type=tel],
+											&[type=email],
+											&[type=number] {
+												&[name=s_user_name],
+												&[name=s_user_cep],
+												&[name=billingAddressPostalCode],
+												&[name=user_graduation_course],
+												&[name=s_user_graduation_date] {width: 57%;}
+											}
+										}
+									}
+								}
+							}/*div*/
+
+							input[type=submit] {width: 100%;}
+						}/*.educationLead*/
+					}
+				}
+			}/*#formAction*/
+		}/*section*/
+	}/*.content*/
+}	
